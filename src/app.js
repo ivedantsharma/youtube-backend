@@ -11,7 +11,16 @@ app.use(
     credentials: true,
   })
 );
-app.use(epress.json({ limit: "16kb" }));
-app.use(expresss.urlencoded({ etended: true, limit: "16kb" }));
+app.use(express.json({ limit: "16kb" }));
+app.use(express.urlencoded({ etended: true, limit: "16kb" }));
 app.use(express.static("public"));
 app.use(cookieParser());
+
+// Routes import
+
+import userRouter from "./routes/user.routes.js";
+
+// Router
+app.use("/api/v1/users", userRouter);
+
+export { app };
